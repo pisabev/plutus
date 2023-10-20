@@ -85,6 +85,22 @@ func TestApi(t *testing.T) {
 			expectError: &ResponseError{Error: "Missing or invalid fields"},
 		},
 		{
+			title:  "Transaction write - bad data 2",
+			url:    "/webhooks/transaction",
+			method: http.MethodPost,
+			body: model.Transaction{
+				TransactionId:   "tqZi6QapS41zcEHy2",
+				TransactionType: "Sal",
+				OrderId:         "c66oxMaisTwJQXjD",
+				Amount:          10,
+				Currency:        model.Eur,
+				Description:     "Test transaction",
+				AccountId:       "001",
+			},
+			expectCode:  http.StatusBadRequest,
+			expectError: &ResponseError{Error: "Missing or invalid fields"},
+		},
+		{
 			title:       "Missing account",
 			url:         "/account/unknown",
 			method:      http.MethodGet,
