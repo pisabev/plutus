@@ -22,7 +22,7 @@ go test ./...
 ```bash
 curl -X POST "http://localhost:8080/webhooks/transaction" -d '{"transactionId":"tqZi6QapS41zcEHy", "orderId":"c66oxMaisTwJQXjD", "transactionType":"SALE", "amount": "20.00", "currency":"EUR", "description":"Test transaction", "accountId":"001"}'
 curl -X POST "http://localhost:8080/webhooks/transaction" -d '{"transactionId":"tqZi6QapS41zcEHy2", "orderId":"c66oxMaisTwJQXjD", "transactionType":"SALE", "amount": "20.00", "currency":"EUR", "description":"Test transaction", "accountId":"001"}'
-curl -X POST "http://localhost:8080/webhooks/transaction" -d '{"transactionId":"tqZi6QapS41zcEHy3", "orderId":"c66oxMaisTwJQXjD", "transactionType":"DEBIT", "amount": "10.00", "currency":"EUR", "description":"Test transaction", "accountId":"001"}'
+curl -X POST "http://localhost:8080/webhooks/transaction" -d '{"transactionId":"tqZi6QapS41zcEHy3", "orderId":"c66oxMaisTwJQXjD", "transactionType":"CREDIT", "amount": "10.00", "currency":"EUR", "description":"Test transaction", "accountId":"001"}'
 ```
 
 ### Account balance
@@ -31,7 +31,7 @@ curl -X POST "http://localhost:8080/webhooks/transaction" -d '{"transactionId":"
 curl -X GET "http://localhost:8080/account/001"
 ```
 
-{"balance":"40.00"}
+{"balance":"30.00"}
 
 ### Some stress test with apache ab
 

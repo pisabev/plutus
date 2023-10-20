@@ -46,7 +46,12 @@ type Transaction struct {
 }
 
 func (m *Transaction) Validate() bool {
-	return len(m.OrderId) > 0
+	return (len(m.TransactionId) > 0) &&
+		(len(m.OrderId) > 0) &&
+		(len(m.AccountId) > 0) &&
+		(m.Amount > 0) &&
+		(m.Currency == Eur || m.Currency == Usd || m.Currency == Gbp) &&
+		(m.TransactionType == Sale || m.TransactionType == Refund || m.TransactionType == Credit)
 }
 
 type DbRepository interface {
@@ -137,7 +142,7 @@ func (m *DBRepo) Init() error {
 		order_id text NOT NULL,
 		amount decimal NOT NULL,
 		currency text NOT NULL,
-		description text NOT NULL,
+		description text,
 		account_id text NOT NULL
 	)`
 
