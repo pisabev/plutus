@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  api:
+    build:
+      dockerfile: ./docker/Dockerfile
+      context: ./
+    container_name: api
+    restart: always
+    environment:
+      PSQL_DSN: 'postgres://${USER}:${PASSWORD}@postgresdb:5432/${DATABASE}'
+      SERVER_PORT: '80'
+    depends_on:
+      - postgresdb
+    ports:
+      - "127.0.0.1:${API_PORT}:80"
+  postgresdb:
+    image: postgres:latest
+    container_name: postgresdb
+    environment:
+      - POSTGRES_USER=${USER}
+      - POSTGRES_PASSWORD=${PASSWORD}
+      - POSTGRES_DB=${DATABASE}
+      - DATABASE_HOST=${HOST}
+    ports:
+      - '127.0.0.1:${PSQL_PORT}:5432'
+    volumes:
+      - db-data:/var/lib/psql
+
+volumes:
+  db-data:

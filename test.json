@@ -1,0 +1,9 @@
+{
+  "transactionId": "tqZi6QapS41zcEHy",
+  "orderId": "c66oxMaisTwJQXjD",
+  "transactionType": "SALE",
+  "amount": "10.00",
+  "currency": "EUR",
+  "description": "Test transaction",
+  "accountId": "001"
+}

@@ -1,0 +1,13 @@
+# Binaries
+**/bin
+
+# .env files
+*.env
+
+# .env files
+**/.env
+
+# Editor directories and files
+.idea
+.vscode
+tags
