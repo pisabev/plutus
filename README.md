@@ -1,11 +1,15 @@
 # Plutus demo
 
+### Setup environment variables
+
+```bash
+cp env.example .env
+```
 ### Start the application
 
 ```bash
 docker-compose up
 ```
-* Note: copy env.example and modify if needed to .env
 
 ### Run tests
 
